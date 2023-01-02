@@ -16,4 +16,10 @@ const getPost = (id, callback) => {
   });
 };
 
+// const postForm = document.querySelector("form");
+// postForm.addEventListener("submit", (e) => {
+//   console.log("testing");
+//   e.preventDefault();
+// });
+
 module.exports = { getPost };

@@ -1,19 +1,23 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const { getPost } = require("../public/js/app");
+const hbs = require("hbs");
+const { getPost } = require("../templates/js/app");
 
-app.use(express.static(path.join(__dirname, "../public")));
+const viewPath = path.join(__dirname, "../templates/views");
+const partials = path.join(__dirname, "../templates/partials");
 
-//  Set the handlebars...
+app.set("views", viewPath);
 app.set("view engine", "hbs");
 
-// Set the partaials
+hbs.registerPartials(partials);
 
-app.get("/handlebars", (req, res) => {
+app.use(express.static(viewPath));
+
+app.get("/", (req, res) => {
   res.render("index", {
-    title: "Weather App",
-    name: "Nischay Jain",
+    title: "hbs",
+    name: "nischay_harsora",
   });
 });
 
